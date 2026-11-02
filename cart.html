@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Webpage Name</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <div id="nav"></div>
+ 
+    <main class="container py-4">
+        <h2>Your cart</h2>
+        <div id="alerts"></div>
+ 
+        <div id="cart-area"></div>
+ 
+        <form id="checkout" class="card card-body mt-4" novalidate>
+            <h4>Checkout</h4>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label" for="customerId">Customer ID</label>
+                    <input type="number" class="form-control" id="customerId" min="1" required>
+                    <div class="form-text">New? <a href="customers.html">Register first</a>.</div>
+                </div>
+                
+            </div>
+            <button class="btn btn-success mt-3 align-self-start" type="submit" id="placeBtn">Place order</button>
+        </form>
+    </main>
+ 
+    <div id="footer"></div>
