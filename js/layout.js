@@ -12,12 +12,14 @@ const navRoot = document.querySelector("#nav");
 if (navRoot) {
   navRoot.innerHTML = `
     <header class="site-header">
-      <nav class="container nav-inner" aria-label="Main navigation">
-        <a class="brand" href="index.html" aria-label="Tiny Time home"><span class="brand-mark" aria-hidden="true">T.</span><span>Tiny Time</span></a>
-        <div class="nav-links">
-          ${navigation
-            .map(({ href, label }) => `<a class="nav-link${currentPage === href ? " is-active" : ""}" href="${href}"${currentPage === href ? ' aria-current="page"' : ""}>${label}</a>`)
-            .join("")}
+      <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+        <div class="container flex-wrap gap-2">
+          <a class="navbar-brand fw-semibold" href="index.html">Tiny Time</a>
+          <div class="navbar-nav flex-row flex-wrap gap-2">
+            ${navigation
+              .map(({ href, label }) => `<a class="nav-link${currentPage === href ? " active" : ""}" href="${href}"${currentPage === href ? ' aria-current="page"' : ""}>${label}</a>`)
+              .join("")}
+          </div>
         </div>
       </nav>
     </header>`;
@@ -27,19 +29,18 @@ const footerRoot = document.querySelector("#footer");
 if (footerRoot) {
   footerRoot.innerHTML = `
     <footer class="site-footer">
-      <div class="container footer-inner">
-        <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">T.</span><span>Tiny Time</span></a>
-        <p>Little dinos. Big adventures.</p>
-        <span>© ${new Date().getFullYear()} Tiny Time</span>
+      <div class="container py-3 d-flex flex-wrap justify-content-between gap-2">
+        <a class="link-dark link-underline-opacity-0" href="index.html">Tiny Time</a>
+        <small class="text-body-secondary">Little dinos. Big adventures. · © ${new Date().getFullYear()}</small>
       </div>
     </footer>`;
 }
 
 const products = [
-  { name: "Tyrannosaurus rex", kind: "Predator", price: 6, tag: "The classic", tone: "rust", mark: "T." },
-  { name: "Triceratops", kind: "Herbivore", price: 7, tag: "Gentle giant", tone: "sage", mark: "Tri" },
-  { name: "Stegosaurus", kind: "Herbivore", price: 6, tag: "A little spiky", tone: "gold", mark: "Steg" },
-  { name: "Velociraptor", kind: "Predator", price: 5, tag: "Quick thinker", tone: "blue", mark: "V." },
+  { name: "Tyrannosaurus rex", kind: "Predator", price: 6, tag: "The classic" },
+  { name: "Triceratops", kind: "Herbivore", price: 7, tag: "Gentle giant" },
+  { name: "Stegosaurus", kind: "Herbivore", price: 6, tag: "A little spiky" },
+  { name: "Velociraptor", kind: "Predator", price: 5, tag: "Quick thinker" },
 ];
 
 const results = document.querySelector("#results");
@@ -70,18 +71,17 @@ if (results && filterForm) {
 
     countLabel.textContent = visibleProducts.length
       ? `${visibleProducts.length} little ${visibleProducts.length === 1 ? "legend" : "legends"}`
-      : "No dinos found — try a different search.";
+      : "No dinos found. Try a different search.";
 
-    results.innerHTML = visibleProducts.map((product, index) => `
-      <article class="product-card">
-        <div class="product-art tone-${product.tone}" aria-hidden="true">
-          <span class="product-number">0${index + 1} / 04</span>
-          <span class="product-mark">${product.mark}</span>
-          <span class="product-tag">${product.tag}</span>
-        </div>
-        <div class="product-info">
-          <div><p class="product-kind">${product.kind}</p><h3>${product.name}</h3></div>
-          <span class="product-price">$${product.price.toFixed(2)}</span>
+    results.innerHTML = visibleProducts.map((product) => `
+      <article class="col">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <span class="badge text-bg-light align-self-start mb-3">${product.kind}</span>
+            <h3 class="h5 card-title">${product.name}</h3>
+            <p class="card-text text-body-secondary small">${product.tag}</p>
+            <p class="fw-semibold mb-0 mt-auto">$${product.price.toFixed(2)}</p>
+          </div>
         </div>
       </article>`).join("");
   };
