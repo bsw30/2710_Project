@@ -11,7 +11,7 @@ const navRoot = document.querySelector("#nav");
 
 if (navRoot) {
   navRoot.innerHTML = `
-    <header class="site-header">
+    <header class="bg-body border-bottom">
       <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
         <div class="container flex-wrap gap-2">
           <a class="navbar-brand fw-semibold" href="index.html">Tiny Time</a>
@@ -28,7 +28,7 @@ if (navRoot) {
 const footerRoot = document.querySelector("#footer");
 if (footerRoot) {
   footerRoot.innerHTML = `
-    <footer class="site-footer">
+    <footer class="bg-body border-top">
       <div class="container py-3 d-flex flex-wrap justify-content-between gap-2">
         <a class="link-dark link-underline-opacity-0" href="index.html">Tiny Time</a>
         <small class="text-body-secondary">Little dinos. Big adventures. · © ${new Date().getFullYear()}</small>
