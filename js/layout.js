@@ -37,10 +37,10 @@ if (footerRoot) {
 }
 
 const products = [
-  { name: "Tyrannosaurus rex", kind: "Predator", price: 6, tag: "The classic" },
-  { name: "Triceratops", kind: "Herbivore", price: 7, tag: "Gentle giant" },
-  { name: "Stegosaurus", kind: "Herbivore", price: 6, tag: "A little spiky" },
-  { name: "Velociraptor", kind: "Predator", price: 5, tag: "Quick thinker" },
+  { name: "Tyrannosaurus rex", kind: "Predator", price: 6, tag: "The classic", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dino_icon-nNKAIVqvV9h7TRl0cyMj2JK0h7bQZn.jpg", imageAlt: "A red dinosaur toy on a dark surface." },
+  { name: "Triceratops", kind: "Herbivore", price: 7, tag: "Gentle giant", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tric_01-uOGbHHvvqM5gV1QkBqFPOtf1Zs2A6t.jpg", imageAlt: "An orange toy dinosaur in a soft-focused scene." },
+  { name: "Stegosaurus", kind: "Herbivore", price: 6, tag: "A little spiky", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/steg_01-7qCS0coxyWUcqNCxPUZSuwUVAZBaYQ.jpg", imageAlt: "A gray Stegosaurus toy with red plates on sand." },
+  { name: "Velociraptor", kind: "Predator", price: 5, tag: "Quick thinker", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/background_01-rhV0OBlYVTATiBnxDCndmVPFMQa1Oy.jpg", imageAlt: "Colorful miniature dinosaurs arranged on a light background." },
 ];
 
 const results = document.querySelector("#results");
@@ -76,8 +76,11 @@ if (results && filterForm) {
     results.innerHTML = visibleProducts.map((product) => `
       <article class="col">
         <div class="card h-100">
+          <div class="ratio ratio-4x3">
+            <img class="card-img-top w-100 h-100 object-fit-cover" src="${product.image}" alt="${product.imageAlt}" loading="lazy" decoding="async">
+          </div>
           <div class="card-body d-flex flex-column">
-            <span class="badge text-bg-light align-self-start mb-3">${product.kind}</span>
+            <span class="badge text-bg-warning align-self-start mb-3">${product.kind}</span>
             <h3 class="h5 card-title">${product.name}</h3>
             <p class="card-text text-body-secondary small">${product.tag}</p>
             <p class="fw-semibold mb-0 mt-auto">$${product.price.toFixed(2)}</p>
